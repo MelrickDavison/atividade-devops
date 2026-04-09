@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Linha inicial alterada pelo user1 e user2
-=======
-Linha inicial alterada pelo user1
->>>>>>> 36fb4e8399e4b288a20e549659962ed4ea441514
+Linha inicial alterada pelo user1 e user 2
