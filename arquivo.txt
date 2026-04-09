@@ -1,1 +1,1 @@
-Linha inicial alterada pelo user1 e user2
+Criando novo conflito user1
