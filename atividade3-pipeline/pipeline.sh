@@ -24,14 +24,21 @@ done
 if [ $ERRO -ne 0 ]; then
     git checkout -b fixpythonLint
     echo "Corrija os erros manualmente e rode novamente"
+    exit 1
 fi
 
 git checkout main
 git merge fixpythonLint
 
 sudo mkdir -p /opt/app1
-rsync -av . /opt/app1
 
+rsync -av \
+  --exclude=".git" \
+  --exclude="__pycache__" \
+  --exclude="*.pyc" \
+  . /opt/app1
+
+fuser -k 3333/tcp 2>/dev/null
 python3 main.py &
 
 sleep 2
