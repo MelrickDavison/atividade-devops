@@ -3,8 +3,12 @@
 REPO="https://github.com/fabricfc/pythonserver"
 PASTA="pythonserver"
 
-git clone $REPO
-cd $PASTA
+if [ -d "pythonserver" ]; then
+    cd pythonserver
+else
+    git clone $REPO
+    cd pythonserver
+fi
 
 ERRO=0
 
@@ -19,8 +23,7 @@ done
 
 if [ $ERRO -ne 0 ]; then
     git checkout -b fixpythonLint
-    echo "Corrija os erros manualmente"
-    exit 1
+    echo "Corrija os erros manualmente e rode novamente"
 fi
 
 git checkout main
@@ -29,8 +32,8 @@ git merge fixpythonLint
 sudo mkdir -p /opt/app1
 rsync -av . /opt/app1
 
-python3 app.py &
+python3 main.py &
 
 sleep 2
 
-curl http://localhost:8000
+curl http://localhost:3333
